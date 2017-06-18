@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# last updated : 2017/06/18 13:53:46 JST
+# last updated : 2017/06/18 14:14:40 JST
 #
 # 青空文庫スプリッター
 # 青空文庫形式のテキストを任意サイズで分割する。デフォルトは512k
@@ -19,8 +19,7 @@ use Getopt::Long qw(:config posix_default no_ignore_case gnu_compat);
 my $splitsize = 512000;
 my $ver_number = "Ver.0.01";
 my ($split_size, $input_name, $show_help, $prefix_name, $print_verbose, $show_version);
-my $charset = 'utf8';
-my $charcode = 'UTF-8';
+my $charcode = 'utf8';
 
 if ($^O =~ m/MSWin32/) {
   $charcode = "cp932";
@@ -112,9 +111,8 @@ sub book_split {
   my $count = 1;
   my $temp;
   my $outname;
-  $charset = &set_enccode($input_name);
-  print $charset . "\n";
-  open ( $IN, "<:encoding($charset)" ,"$fname") or die "$!";
+  $charcode = &set_enccode($input_name);
+  open ( $IN, "<:encoding($charcode)" ,"$fname") or die "$!";
   while (my $line = <$IN>) {
 	if ($line =~ m/^［＃改ページ］/) {
 	  $outname = $prefix_name . sprintf("%03d", $count) . ".txt";
@@ -122,7 +120,7 @@ sub book_split {
 		print $OUT $temp;
 	  }
 	  else {
-		open ( $OUT, ">>:encoding($charset)" ,"$outname") or die "$!";
+		open ( $OUT, ">>:encoding($charcode)" ,"$outname") or die "$!";
 		print $OUT $temp;
 	  }
 	  $temp = "";
