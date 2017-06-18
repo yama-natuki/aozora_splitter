@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# last updated : 2017/06/18 10:46:56 JST
+# last updated : 2017/06/18 13:53:46 JST
 #
 # 青空文庫スプリッター
 # 青空文庫形式のテキストを任意サイズで分割する。デフォルトは512k
@@ -108,15 +108,38 @@ sub set_enccode {
 
 sub book_split {
   my $fname = shift;
-  my $FILE;
+  my ($IN, $OUT);
+  my $count = 1;
+  my $temp;
+  my $outname;
   $charset = &set_enccode($input_name);
-  open ( $FILE, "<:$charset" ,"$fname") or die "$!";
-  while (<$FILE>) {
-	if ($_ =~ m/^［＃中見出し］/) {
-	  print $_;
+  print $charset . "\n";
+  open ( $IN, "<:encoding($charset)" ,"$fname") or die "$!";
+  while (my $line = <$IN>) {
+	if ($line =~ m/^［＃改ページ］/) {
+	  $outname = $prefix_name . sprintf("%03d", $count) . ".txt";
+	  if (-f $outname) {
+		print $OUT $temp;
+	  }
+	  else {
+		open ( $OUT, ">>:encoding($charset)" ,"$outname") or die "$!";
+		print $OUT $temp;
+	  }
+	  $temp = "";
+	  $temp = $temp . $line;
+	  my $size = (-s $outname);
+	  if ($size > $splitsize) {
+		close( $OUT );
+
+		$count++;
+	  }
+	}
+	else {
+	  $temp = $temp . $line;
 	}
   }
-  close($FILE);
+  close($IN);
+  close($OUT);
 }
 
 # main
@@ -130,8 +153,6 @@ sub book_split {
 
   if ($input_name) {
 	if ( -f $input_name ) {
-	  $charset = &set_enccode($input_name);
-	  print  'Encoding of file ' . $input_name . " is " . $charset . "\n";
 	  unless ($prefix_name) {
 		my ($basename, $dirname, $ext) = fileparse($input_name, qr/\..+$/);
 		$prefix_name = $basename;
