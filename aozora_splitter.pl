@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# last updated : 2017/06/19 15:15:16 JST
+# last updated : 2017/06/19 15:16:41 JST
 #
 # 青空文庫スプリッター
 # 青空文庫形式のテキストを任意サイズで分割する。デフォルトは512k
@@ -63,7 +63,7 @@ sub help {
   print encode($charcode,
         "Usage: aozora_spliter [options] -i [INPUT_FILE] -p [PREFIX]\n".
         "\t青空文庫形式のテキストを任意サイズで分割するsplitコマンド\n".
-        "\t中見出しを一つのブロックとして、指定したサイズの近似値で\n".
+        "\t改ページを一つのブロックとして、指定したサイズの近似値で\n".
         "\tPREFIXの末尾に三桁の連番を付けて保存する。\n".
         "\t拡張子は[.txt]固定。\n".
         "\n".
