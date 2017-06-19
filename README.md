@@ -1,7 +1,7 @@
-alphapolis_spliter.pl
+aozora_spliter.pl
 ===============================
 
-alphapolis_spliter.plとは？
+aozora_spliterとは？
 -------------------------------
 
 　青空文庫形式のテキストファイルを任意のサイズに分割して保存します。
@@ -19,7 +19,7 @@ alphapolis_spliter.plとは？
 
 　例えば *natume_souseki.txt* を *512kb* のサイズでファイル名 *「natume-」* の頭文字を付けて保存する。
 
-`    ./alphapolis_spliter.pl -s 512k -i natume_souseki.txt -p natume- `
+`    ./aozora_spliter.pl -s 512k -i natume_souseki.txt -p natume- `
 
 とすれば、
 
@@ -27,7 +27,7 @@ alphapolis_spliter.plとは？
 
 といった連番ファイルが作成されます。
 
-`   ./alphapolis_spliter.pl --help `
+`   ./aozora_spliter.pl --help `
 
 とすればhelpが表示されます。
 
