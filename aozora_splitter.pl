@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# last updated : 2017/06/19 15:16:41 JST
+# last updated : 2017/06/19 17:37:47 JST
 #
 # 青空文庫スプリッター
 # 青空文庫形式のテキストを任意サイズで分割する。デフォルトは512k
@@ -7,13 +7,13 @@
 # license GPLv2
 #
 # Usage.
-# ./aozora_spliter.pl [OPTION]...-i  [INPUT -p [PREFIX]]
-# /aozora_spliter.p --help
+# ./aozora_splitter.pl [OPTION]...-i  [INPUT -p [PREFIX]]
+# /aozora_splitter.p --help
 # 詳細は参照。
 #
 # 例.
 # test.txtを 512kbのサイズでファイル名「aaa-」の頭文字を付けて保存する。
-# aozora_spliter.pl -s 512k -i test.txt -p aaa-
+# aozora_splitter.pl -s 512k -i test.txt -p aaa-
 #
 
 

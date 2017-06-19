@@ -1,7 +1,7 @@
-aozora_spliter.pl
+aozora_splitter.pl
 ===============================
 
-aozora_spliterとは？
+aozora_splitterとは？
 -------------------------------
 
 　青空文庫形式のテキストファイルを任意のサイズに分割して保存します。
@@ -19,7 +19,7 @@ aozora_spliterとは？
 
 　例えば *natume_souseki.txt* を *512kb* のサイズでファイル名 *「natume-」* の頭文字を付けて保存する。
 
-`    ./aozora_spliter.pl -s 512k -i natume_souseki.txt -p natume- `
+`    ./aozora_splitter.pl -s 512k -i natume_souseki.txt -p natume- `
 
 とすれば、
 
@@ -27,7 +27,7 @@ aozora_spliterとは？
 
 といった連番ファイルが作成されます。
 
-`   ./aozora_spliter.pl --help `
+`   ./aozora_splitter.pl --help `
 
 とすればhelpが表示されます。
 
