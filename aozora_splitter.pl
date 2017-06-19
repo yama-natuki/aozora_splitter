@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# last updated : 2017/06/18 16:31:06 JST
+# last updated : 2017/06/19 09:48:47 JST
 #
 # 青空文庫スプリッター
 # 青空文庫形式のテキストを任意サイズで分割する。デフォルトは512k
@@ -150,7 +150,6 @@ sub book_split {
 
   if ($split_size) {
 	$splitsize = &size_convert($split_size);
-	print $splitsize . "\n";
   }
 
   if ($input_name) {
@@ -158,13 +157,13 @@ sub book_split {
 	  unless ($prefix_name) {
 		my ($basename, $dirname, $ext) = fileparse($input_name, qr/\..+$/);
 		$prefix_name = $basename;
-		print $prefix_name . "\n";
+		if ($print_verbose) { print STDERR encode($charcode, "PREFIX word :: $prefix_name . \n") };
 	  }
 	  if ($print_verbose) {
-		print STDERR encode($charcode, "input file:: $input_name \n");
+		if ($print_verbose) { print STDERR encode($charcode, "input file:: $input_name \n") };
 	  }
+	  if ($print_verbose) { print STDERR encode($charcode, "split size $splitsize byte.\n") };
 	  &book_split($input_name);
-	  if ($print_verbose) { print STDERR encode($charcode, "Done.\n"); }
 	}
 	else {
 	  print encode($charcode, "ファイルが存在しません。\n");
